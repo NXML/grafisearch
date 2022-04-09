@@ -1,12 +1,20 @@
-.PHONY: godev
+.PHONY: build
 build:
 	pnpm run build
 	go build
 
-.PHONY: godev
+.PHONY: dev
 dev:
 	gow run .
 
-.PHONY: godev
+.PHONY: frontdev
 frontdev:
 	pnpm run dev
+
+.PHONY: build-image
+build-image:
+	docker build -t grafisearch:latest ./
+
+.PHONY: run-image
+run-image:
+	docker run -p 8042:8042 grafisearch:latest
